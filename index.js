@@ -51,7 +51,7 @@ get2FAEnabledUsers({
   ipAddress: "192.168.1.3",
 });
 
-// Mapped through the users array and filtered out the users that passes the get2FAEnabledUsers function
+// Mapped through the users array passes the get2FAEnabledUsers function and assign accessGranted to true or false respectively
 const grantedUsers = users.map((employee) => {
   let isGranted = get2FAEnabledUsers(employee);
   return { ...employee, accessGranted: isGranted };
