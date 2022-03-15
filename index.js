@@ -1,3 +1,8 @@
+// Get the csv data and parse it into an array of objects
+// You can use any number of csv converter libraries to parse the csv data or online
+// Or you can write your own parser, which is out of scope of this assignment
+
+// I converted the csv data into an array of objects
 import { users } from "./users.js";
 
 const get2FAEnabledUsers = (user) => {
