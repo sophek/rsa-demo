@@ -12,8 +12,13 @@ const get2FAEnabledUsers = (user) => {
   //Filter out users that have 2FA enabled
   const is2FAEnabled = user.twoFactor;
 
+  // This regular express will match ip range of 192.168.1.1 to 192.168.9.9,
+  // I wasn't sure x.x was single digit, so I assumed that.
+  const re =
+    /^192\.168\.(1\.([1-9]|[1-9]\d|[12]\d\d)|9\.\d|[2-8]\.([1-9]?\d|[12]\d\d))$/;
+
   // Ip address should be from the ip range 192.168.x.x
-  const ipAddressRange = user.ipAddress.includes("192.168.");
+  const ipAddressRange = re.exec(user.ipAddress);
 
   // Email must be from the @example.com and must have 2FA enabled or must be connected from an internal company IP address (192.168.X.X) to be granted access.
   if (!isExampleEmail) {
